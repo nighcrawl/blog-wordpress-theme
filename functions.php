@@ -30,6 +30,8 @@ function actheme_enqueue_styles() {
     foreach($stylesheets as $stylesheet) {
         wp_enqueue_style( $stylesheet['handle'], $stylesheet['source'], $stylesheet['deps'], $stylesheet['version'] );
     }
+
+    wp_enqueue_script( 'codepenio-script', 'https://production-assets.codepen.io/assets/embed/ei.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'actheme_enqueue_styles' );
 
