@@ -52,3 +52,29 @@ article.page, article.post, article.attachment {
     background-color: transparent;
     height: 100%;
 }
+
+
+.format-status .entry-meta .avatar {
+  display: none;
+}
+
+.format-status:before {
+    font-family:'Genericons';
+    display:block;
+    font-size:45px;
+    font-style:normal;
+    position:absolute;
+    left:-65px;
+    top:25px;
+    width:40px;
+    height:40px;
+    content:'\f101';
+}
+
+.entry-reaction:empty {
+    padding: 0;
+}
+
+.entry-header .entry-title, .entry-header .entry-title a {
+    padding-top: 34px;
+}
