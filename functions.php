@@ -47,13 +47,6 @@ function actheme_post_formats() {
 }
 add_action('after_setup_theme', 'actheme_post_formats', 11);
 
-
-// Remove post formats from parent theme
-function actheme_remove_parent_post_formats() {
-    remove_post_type_support('post', 'post-formats');
-}
-add_action('init', 'actheme_remove_parent_post_formats', 11);
-
 if ( ! function_exists( 'sempress_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
