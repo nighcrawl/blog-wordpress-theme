@@ -40,7 +40,9 @@ function actheme_post_formats() {
         array(
             'link',
             'status',
+			'aside',
             'gallery',
+			'photo',
             'video',
         )
     );
@@ -78,3 +80,34 @@ function rss_post_thumbnail($content) {
 add_filter('the_excerpt_rss', 'rss_post_thumbnail');
 add_filter('the_content_feed', 'rss_post_thumbnail');
 
+
+function generate_post_title( $data )
+{
+  if(empty($data['post_title'])) {
+
+    $content = $data['post_content'];
+
+    $pieces = explode(" ", $content);
+    $first_part = implode(" ", array_splice($pieces, 0, 5));
+
+    $data['post_title'] = $first_part;
+    $data['post_name'] = sanitize_title($first_part);
+    
+  }
+  return $data; // Returns the modified data.
+}
+add_filter( 'wp_insert_post_data' , 'generate_post_title' , '99', 1 ); 
+
+/**
+ * Added links to the post-footer
+ */
+/*
+function actheme_syndication_links() {
+	if ( function_exists( 'get_syndication_links' ) && get_syndication_links() ) {
+		echo '<span class="sep"> | </span>';
+		//_e( 'Syndication Links', 'sempress' );
+		echo get_syndication_links( null, array( 'show_text_before' => null) );
+	}
+}
+add_action( 'sempress_entry_footer', 'actheme_syndication_links' );
+*/
