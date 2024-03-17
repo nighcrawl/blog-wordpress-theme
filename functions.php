@@ -80,15 +80,11 @@ function rss_post_thumbnail($content) {
 add_filter('the_excerpt_rss', 'rss_post_thumbnail');
 add_filter('the_content_feed', 'rss_post_thumbnail');
 
-
-function generate_post_title( $data )
-{
+function generate_post_title($data) {
   if(empty($data['post_title'])) {
 
-    $content = $data['post_content'];
-
-    $pieces = explode(" ", $content);
-    $first_part = implode(" ", array_splice($pieces, 0, 5));
+    $content = strip_tags($data['post_content']);
+    $first_part = smart_trim($content);
 
     $data['post_title'] = $first_part;
     $data['post_name'] = sanitize_title($first_part);
@@ -98,16 +94,27 @@ function generate_post_title( $data )
 }
 add_filter( 'wp_insert_post_data' , 'generate_post_title' , '99', 1 ); 
 
-/**
- * Added links to the post-footer
- */
-/*
-function actheme_syndication_links() {
-	if ( function_exists( 'get_syndication_links' ) && get_syndication_links() ) {
-		echo '<span class="sep"> | </span>';
-		//_e( 'Syndication Links', 'sempress' );
-		echo get_syndication_links( null, array( 'show_text_before' => null) );
-	}
+function smart_trim($string, $truncation = 6) {
+  // Utilisation de l'expression régulière pour détecter la première phrase
+  // On recherche la première occurrence d'un point, d'un point d'exclamation ou d'un point d'interrogation suivis d'un espace ou de la fin de la chaîne
+  $pattern = '/^((?:\S+\s+){0,'.($truncation - 1).'}(?:\S+))(?:[.!?]|$)/';
+
+  // Exécution de l'expression régulière sur la chaîne de caractères
+  preg_match($pattern, $string, $matches);
+  
+  // Si une correspondance est trouvée
+  if (!empty($matches)) {
+      // Si la phrase contient plus de mots que le nombre spécifié, on retourne les premiers mots suivis de points de suspension
+      $words = explode(' ', $matches[1]);
+      if (count($words) > $truncation) {
+          return implode(' ', array_slice($words, 0, $truncation)) . '...';
+      } else {
+          // Sinon, on retourne toute la phrase
+          return $matches[0];
+      }
+  } else {
+      // Si aucun point n'est trouvé, on tronque la chaîne au nombre de mots spécifié
+      $words = explode(' ', $string);
+      return implode(' ', array_slice($words, 0, $truncation)) . '...';
+  }
 }
-add_action( 'sempress_entry_footer', 'actheme_syndication_links' );
-*/
