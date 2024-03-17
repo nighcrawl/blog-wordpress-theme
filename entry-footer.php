@@ -1,7 +1,11 @@
 <?php defined( 'ABSPATH' ) || exit; ?>
 
 <footer class="entry-meta">
-	<?php _e( 'Posted', 'sempress' );?>
+	<?php if ( !get_the_title() || get_post_format() === 'status' || get_post_format() === 'aside' ) : ?>
+		<?php sempress_posted_on(); ?>
+	<?php else: ?>
+		<?php _e( 'Posted', 'sempress' );?>
+	<?php endif; ?>
 	<?php
 	/* translators: used between list items, there is a space after the comma */
 	$categories_list = get_the_category_list( __( ', ', 'sempress' ) );
