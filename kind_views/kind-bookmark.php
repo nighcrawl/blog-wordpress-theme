@@ -22,7 +22,7 @@ if ( ! $embed ) {
 		echo sprintf( '<span class="p-name">%1s</span>', esc_html( $cite['name'] ) );
 	}
 	if ( $author ) {
-		echo ' ' . __( 'par', 'indieweb-post-kinds' ) . ' ' . $author;
+		echo ' ' . __( 'by', 'indieweb-post-kinds' ) . ' ' . $author;
 	}
 	if ( ! empty( $cite['publication'] ) ) {
 		echo sprintf( ' <em>(<span class="p-publication">%1s</span>)</em>', esc_html( $cite['publication'] ) );
@@ -30,6 +30,15 @@ if ( ! $embed ) {
 }
 ?>
 </header>
+<?php
+if ( ! empty( $embed ) ) {
+	echo sprintf( '<blockquote class="e-summary">%1s</blockquote>', $embed );
+} elseif ( ! empty( $cite['summary'] ) ) {
+	echo sprintf( '<blockquote class="e-summary">%1s</blockquote>', $cite['summary'] );
+}
+
+// Close Response
+?>
 </section>
 
 <?php
