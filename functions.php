@@ -84,7 +84,7 @@ function generate_post_title($data) {
   if(empty($data['post_title'])) {
 
     $content = strip_tags($data['post_content']);
-    $first_part = smart_trim($content);
+    $first_part = smart_trim($content, 10);
 
     $data['post_title'] = $first_part;
     $data['post_name'] = sanitize_title($first_part);
