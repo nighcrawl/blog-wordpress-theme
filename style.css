@@ -75,6 +75,10 @@ article.page, article.post, article.attachment {
     padding: 0;
 }
 
+.entry-reaction .response > *:last-child {
+    margin-bottom: 0;
+}
+
 .entry-header .entry-title, .entry-header .entry-title a {
     padding-top: 34px;
 }
@@ -86,4 +90,8 @@ blockquote.e-summary::before {
 blockquote.e-summary {
     margin-left: initial;
     padding-left: initial;
+}
+
+.kind-embed > * {
+    max-width: 100%;
 }
