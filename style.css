@@ -114,3 +114,10 @@ blockquote.e-summary {
 .entry-reaction:empty + .entry-content {
     padding-top: 35px;
 }
+
+iframe:has(+ a[href^="https://youtube.com/shorts"]) {
+    /* styles pour les iframes suivies par un lien */
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  height: auto;
+}
