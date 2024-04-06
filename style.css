@@ -110,3 +110,7 @@ blockquote.e-summary {
     width: 100%;
     max-width: 100%;
 }
+
+.entry-reaction:empty + .entry-content {
+    padding-top: 35px;
+}
