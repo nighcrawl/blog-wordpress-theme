@@ -105,3 +105,8 @@ blockquote.e-summary {
 .kind-embed > * {
     max-width: 100%;
 }
+
+.entry-content iframe, .entry-content object, .entry-content embed {
+    width: 100%;
+    max-width: 100%;
+}
