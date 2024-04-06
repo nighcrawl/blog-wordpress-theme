@@ -78,3 +78,7 @@ article.page, article.post, article.attachment {
 .entry-header .entry-title, .entry-header .entry-title a {
     padding-top: 34px;
 }
+
+blockquote.e-summary::before {
+    display: none;
+}
