@@ -45,6 +45,7 @@ article.page, article.post, article.attachment {
     background-color: #ffffff;
     border-radius: 6px;
     align-items: center;
+    display: flex;
 }
 
 :where(.wp-block-search__button-inside .wp-block-search__inside-wrapper) input[type="search"] {
