@@ -79,6 +79,10 @@ article.page, article.post, article.attachment {
     margin-bottom: 0;
 }
 
+.entry-reaction .response .p-author .u-photo {
+    display: none;
+}
+
 .entry-header .entry-title, .entry-header .entry-title a {
     padding-top: 34px;
 }
