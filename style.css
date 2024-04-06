@@ -52,6 +52,7 @@ article.page, article.post, article.attachment {
     border: none;
     background-color: transparent;
     height: 100%;
+    box-shadow: none;
 }
 
 
