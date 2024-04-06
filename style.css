@@ -87,6 +87,10 @@ article.page, article.post, article.attachment {
     padding-top: 34px;
 }
 
+.entry-content > *:first-child {
+    margin-top: 0;
+}
+
 blockquote.e-summary::before {
     display: none;
 }
