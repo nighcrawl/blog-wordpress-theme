@@ -57,7 +57,7 @@ article.page, article.post, article.attachment {
 
 
 .format-status .entry-meta .avatar {
-  display: none;
+  display: block !important;
 }
 
 .format-status:before {
